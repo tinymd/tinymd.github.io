@@ -89,74 +89,6 @@
 
 
   
-    <article id="post-week1-text preprocessing-_feature extraction" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/08/16/week1-text preprocessing-_feature extraction/" class="article-date">
-  <time datetime="2019-08-15T16:28:24.443Z" itemprop="datePublished">2019-08-16</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>@[Toc](This week, we focus on text classification)<br>tips: text classification can be used to sentiment analysis.</p>
-<h1 id="text-preprocessing"><a href="#text-preprocessing" class="headerlink" title="text preprocessing"></a>text preprocessing</h1><h2 id="Tokenization"><a href="#Tokenization" class="headerlink" title="Tokenization"></a>Tokenization</h2><p>How to process text depends on what you think of text as.<br>a sequence of</p>
-<ul>
-<li>characters</li>
-<li>words</li>
-<li>phrases and named entities</li>
-<li>sentences</li>
-<li>paragraphs</li>
-</ul>
-<p>Here, we think of text as a sequence of words because we reckon that a word is a meaningful sequence of characters.<br>Therefore, we should extract all words from a sentence.This process is called <strong>tokenization</strong>. So what’s the boundary of words?<br>Here, we mainly talk about English.<br>In English we can split a sentence by spaces or punctuation.<br>Three methods of tokenization are built in Python ntlk liberary.</p>
-<ol>
-<li>whitespace tokenizer</li>
-<li>puctuation tokenizer</li>
-<li>treebankword tokenizer</li>
-</ol>
-<p><img src="https://img-blog.csdnimg.cn/20181105104945765.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3RpbnltZA==,size_16,color_FFFFFF,t_70" alt="examples"></p>
-<h2 id="Normalization"><a href="#Normalization" class="headerlink" title="Normalization"></a>Normalization</h2><ul>
-<li>stemming<br><img src="https://img-blog.csdnimg.cn/20181105104748894.png" alt="rules of stemming"></li>
-</ul>
-<ul>
-<li>lemmatization<br><img src="https://img-blog.csdnimg.cn/20181105104833926.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3RpbnltZA==,size_16,color_FFFFFF,t_70" alt="rules of lemmatization"></li>
-</ul>
-<p><img src="https://img-blog.csdnimg.cn/20181105104912209.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3RpbnltZA==,size_16,color_FFFFFF,t_70" alt="examples"></p>
-<h1 id="transforming-tokens-into-features-text-to-text-vector"><a href="#transforming-tokens-into-features-text-to-text-vector" class="headerlink" title="transforming tokens into features / text to text vector"></a>transforming tokens into features / text to text vector</h1><p>== bag of words==</p>
-<ul>
-<li><strong><em>count occurrences of a particular token in our text</em></strong><br><img src="https://img-blog.csdnimg.cn/20181106235111863.png" alt="the most simple"><br>problems:</li>
-</ul>
-<ol>
-<li>loose word order</li>
-<li>counters are not normalized</li>
-</ol>
-<ul>
-<li>so, for word order, we count token pairs, triplets,etc. ==n-gram==</li>
-<li>therefore, there are too many features</li>
-<li>then, we remove some n-grams based on their occurrence frequency in documents of our corpus(df).(remove too high or too low)</li>
-<li>and then, all features we have are moderately appearing among documents of our corpus. Next, we should focus on the value of feature columns.–or term frequency.<br><img src="https://img-blog.csdnimg.cn/2018110700475961.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3RpbnltZA==,size_16,color_FFFFFF,t_70" alt="step by step"></li>
-<li>and then more accurately, we can get df in detail, not just medium df. </li>
-</ul>
-<p>-<img src="https://img-blog.csdnimg.cn/20181107005943195.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3RpbnltZA==,size_16,color_FFFFFF,t_70" alt="IDF"></p>
-<p>Then, we multiply them together as the value of feature column.<br><img src="https://img-blog.csdnimg.cn/20181107010148399.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3RpbnltZA==,size_16,color_FFFFFF,t_70" alt="Tf-Idf"></p>
-<p>python code<br><img src="https://img-blog.csdnimg.cn/20181107010353523.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3RpbnltZA==,size_16,color_FFFFFF,t_70" alt="python code"></p>
-<p>For now, you have vectorize your text by using a couple of numbers. You still don’t do text classification. The simplist way is logestic regression. </p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/08/16/week1-text preprocessing-_feature extraction/" data-id="cjzdgle3p000264r50eizquic" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
     <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/08/15/hello-world/" class="article-date">
@@ -238,10 +170,6 @@
         
           <li>
             <a href="/2019/08/16/test_cloudimage/">(no title)</a>
-          </li>
-        
-          <li>
-            <a href="/2019/08/16/week1-text preprocessing-_feature extraction/">(no title)</a>
           </li>
         
           <li>
